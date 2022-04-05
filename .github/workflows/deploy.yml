@@ -1,7 +1,5 @@
 name: remote ssh command
 on: [push]
-env:
-  FIRST_NAME : Karan
 jobs:
 
   build:
@@ -15,5 +13,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: sh scripts/test.sh $FIRST_NAME
+        script: sh scripts/github-action-proshanti-deploy.sh 
        
