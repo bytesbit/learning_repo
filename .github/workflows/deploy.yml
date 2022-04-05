@@ -15,5 +15,5 @@ jobs:
     username: $USER
     passphrase: 'ignore-error'
     privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-     command: ls 
+    command: ls 
      
