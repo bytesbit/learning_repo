@@ -18,5 +18,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: sh scripts/github-action-proshanti-deploy.sh 
+        script: sh scripts/tesh.sh 
        
