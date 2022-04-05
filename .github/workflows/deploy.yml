@@ -13,4 +13,6 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: sh scripts/ping.sh
+        script: sh scripts/test.sh
+        env:
+          FIRST_NAME : Arun
