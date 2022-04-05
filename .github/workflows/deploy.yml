@@ -13,5 +13,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT}}
-        script: cd scripts ls
-        
+        command : |
+            cd scripts
+            chmod +x redeploy-proshanti-lms.sh
+            ls
