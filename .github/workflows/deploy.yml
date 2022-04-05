@@ -6,12 +6,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using ssh key
+    - name: Deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT}}
-        script: sh /home/proshanti/scripts/redeploy-proshanti-lms.sh
+        script: ls
         
