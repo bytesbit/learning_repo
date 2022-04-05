@@ -14,5 +14,8 @@ jobs:
         privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
         command: |
           cd scripts/
-          ls
+          chmod +x redeploy-proshanti-lms.sh
+          sh redeploy-proshanti-lms.sh
+
+
      
