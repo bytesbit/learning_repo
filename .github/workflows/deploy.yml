@@ -14,4 +14,4 @@ jobs:
         command: |
             cd scripts
             chmod +x redeploy-proshanti-lms.sh
-            ls
+            sh redeploy-proshanti-lms.sh
