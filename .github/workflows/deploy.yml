@@ -12,5 +12,7 @@ jobs:
         username: ${{secrets.SSH_USER}}
         passphrase: 'ignore-error'
         privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-        command: ls 
+        command: |
+          cd scripts
+          sh redeploy-proshanti-lms.sh 
      
