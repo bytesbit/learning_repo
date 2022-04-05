@@ -1,4 +1,4 @@
-name: remote ssh command
+name: Deploy Script
 on: [push]
 jobs:
 
@@ -19,4 +19,3 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: sh scripts/github-action-proshanti-deploy.sh  
-       
