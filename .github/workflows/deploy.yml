@@ -1,18 +1,15 @@
 name: CI Script
 on: [push]
-env:
-  USER: ${{secrets.SSH_USER}}
-  HOST: ${{secrets.SSH_HOST_IP}}
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-18.04 
     steps:   
     - name: Intialize SSH
       uses: garygrossgarten/github-action-ssh@release
       with:
-    host: $HOST
-    username: $USER
+    host: ${{secrets.SSH_HOST_IP}}
+    username: ${{secrets.SSH_USER}}
     passphrase: 'ignore-error'
     privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
     command: ls 
