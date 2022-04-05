@@ -1,17 +1,15 @@
-name: remote ssh command
+name: CI Script
 on: [push]
-jobs:
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Execute SSH commmands on remote server
-      uses: JimCronqvist/action-ssh@master
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04 
+    steps:   
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2.1.0
       with:
-        hosts: '${{ secrets.SSH_USER}}@${{secrets.SSH_HOST_IP}}'
-        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-        command: |
-            cd scripts
-            chmod +x redeploy-proshanti-lms.sh
-            sh redeploy-proshanti-lms.sh
+        key: $ { { secrets.SSH_PRIVATE_KEY } }
+        known_hosts: $ { { secrets.SSH_HOST_IP } }
+
+    - name: Execute test Script
+      run: ssh proshanti@${{ secrets.SSH_HOST_IP}} bash ping.sh
