@@ -13,6 +13,6 @@ jobs:
         passphrase: 'ignore-error'
         privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
         command: |
-          cd scripts
-          sh redeploy-proshanti-lms.sh 
+          cd scripts/
+          ls
      
