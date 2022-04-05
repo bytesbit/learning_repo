@@ -9,7 +9,7 @@ jobs:
       uses: shimataro/ssh-key-action@v2.1.0
       with:
         key: $ { { secrets.SSH_PRIVATE_KEY } }
-        known_hosts: $ { { secrets.SSH_HOST_IP } }
+        known_hosts: $ { { secrets.KNOW_HOST } }
 
-    - name: Execute test Script
-      run: ssh proshanti@${{ secrets.SSH_HOST_IP}} bash ping.sh
+    - name: Run Script
+      run: ssh ${ { secrets.SSH_USER } }@${ { secrets.SSH_HOST_IP } } bash /home/${ { secrets.SSH_USER } }/scripts/redeploy-proshanti-lms.sh
