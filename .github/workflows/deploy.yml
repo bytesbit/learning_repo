@@ -1,7 +1,7 @@
 name: remote ssh command
 on: [push]
 env:
-  FIRST_NAME : Arun
+  FIRST_NAME : Karan
 jobs:
 
   build:
