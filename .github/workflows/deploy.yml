@@ -1,21 +1,16 @@
-name: CI Script
+name: remote ssh command
 on: [push]
-
 jobs:
+
   build:
-    runs-on: ubuntu-18.04 
-    steps:   
-    - name: Intialize SSH
-      uses: garygrossgarten/github-action-ssh@release
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
       with:
-        host: ${{secrets.SSH_HOST_IP}}
-        username: ${{secrets.SSH_USER}}
-        passphrase: 'ignore-error'
-        privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-        command: |
-          cd scripts/
-          chmod +x redeploy-proshanti-lms.sh
-          sh redeploy-proshanti-lms.sh
-
-
-     
+        host: ${{ secrets.SSH_HOST_IP }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: sh ping.sh
