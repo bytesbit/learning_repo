@@ -6,14 +6,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy
-      uses: appleboy/ssh-action@master
+    - name: Execute SSH commmands on remote server
+      uses: JimCronqvist/action-ssh@master
       with:
-        host: ${{ secrets.SSH_HOST_IP }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT}}
-        command : |
+        hosts: '${{ secrets.SSH_USER}}@${{secrets.SSH_HOST_IP}}'
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        command: |
             cd scripts
             chmod +x redeploy-proshanti-lms.sh
             ls
