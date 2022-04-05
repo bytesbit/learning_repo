@@ -13,5 +13,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT}}
-        script: sh ping.sh
+        script: cd scripts ls
         
