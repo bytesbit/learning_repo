@@ -1,5 +1,8 @@
 name: CI Script
 on: [push]
+env:
+  USER: ${{secrets.SSH_USER}}
+  HOST: ${{secrets.SSH_HOST_IP}}
 
 jobs:
   deploy:
@@ -12,4 +15,5 @@ jobs:
         known_hosts: $ { { secrets.KNOW_HOST } }
 
     - name: Run Script
-      run: ssh ${ { secrets.SSH_USER } }@${ { secrets.SSH_HOST_IP } } bash /home/${ { secrets.SSH_USER } }/scripts/redeploy-proshanti-lms.sh
+      run: ssh $USER@$HOST bash /home/$USER/scripts/redeploy-proshanti-lms.sh
+     
