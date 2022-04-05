@@ -8,9 +8,9 @@ jobs:
     - name: Intialize SSH
       uses: garygrossgarten/github-action-ssh@release
       with:
-    host: ${{secrets.SSH_HOST_IP}}
-    username: ${{secrets.SSH_USER}}
-    passphrase: 'ignore-error'
-    privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-    command: ls 
+        host: ${{secrets.SSH_HOST_IP}}
+        username: ${{secrets.SSH_USER}}
+        passphrase: 'ignore-error'
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
+        command: ls 
      
