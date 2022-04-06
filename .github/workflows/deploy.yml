@@ -1,43 +1,21 @@
-name: dagger
+name: Deploy Script
 
-on:
-  push:
-    branches:
-      - main
-
+on: [push]
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Dagger
-        uses: dagger/dagger-for-github@v2
-        with:
-          args: do test
-
-
-
-# name: Deploy Script
-
-# on: [push]
-# jobs:
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#     - name: Set up Python 
-#       uses: actions/setup-python@v3
-#       with:
-#         python-version: 3.8.10
-#     - name: Run Deploy Script
-#       uses: appleboy/ssh-action@master
-#       with:
-#         host: ${{ secrets.SSH_HOST_IP }}
-#         username: ${{ secrets.SSH_USER }}
-#         key: ${{ secrets.SSH_PRIVATE_KEY }}
-#         port: ${{ secrets.SSH_PORT }}
-#         script: sh scripts/github-action-proshanti-deploy.sh  
+    - uses: actions/checkout@v3
+    - name: Set up Python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.8.10
+    - name: Run Deploy Script
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST_IP }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: sh scripts/github-action-proshanti-deploy.sh  
