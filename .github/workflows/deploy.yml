@@ -6,19 +6,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-        check-latest: true
     - uses: actions/checkout@v3
     - name: Set up Python 
       uses: actions/setup-python@v3
       with:
         python-version: 3.8.10
-    - name: Install
-      run: |
-        bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
     - name: Run Deploy Script
       uses: appleboy/ssh-action@master
       with:
