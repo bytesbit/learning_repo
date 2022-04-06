@@ -1,4 +1,4 @@
-name: Deploy Script UI
+name: Deploy Script
 
 on: [push]
 jobs:
