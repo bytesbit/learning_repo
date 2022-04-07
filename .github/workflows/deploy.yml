@@ -3,7 +3,7 @@ on: [push]
 jobs:
   build:
     name: Build
-    runs-on: ubuntu:js-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Run Deploy Script
       uses: appleboy/ssh-action@master
