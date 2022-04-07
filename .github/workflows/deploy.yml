@@ -7,6 +7,9 @@ jobs:
     steps:
     - name: Run Deploy Script
       uses: appleboy/ssh-action@master
+      uses: actions/setup-node@v2
+      with:
+        cache: 'npm'
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
