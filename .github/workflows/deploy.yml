@@ -1,10 +1,9 @@
 name: Proshanti CI/CD
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
-
   build:
     name: Deploy To Dev
     runs-on: ubuntu-latest
