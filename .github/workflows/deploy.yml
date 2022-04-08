@@ -4,11 +4,11 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Deploy To Dev
+  deploy_to_dev:
+    name: Deployment to Dev Environment
     runs-on: ubuntu-latest
     steps:
-    - name: Deployment to Dev Environment
+    - name: SSH and run deploy script
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST_IP }}
