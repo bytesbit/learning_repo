@@ -1,4 +1,4 @@
-name: Proshanti CI/CD
+name: CI/CD
 on:
   push:
     branches: [ master ]
