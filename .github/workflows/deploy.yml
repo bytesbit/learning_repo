@@ -1,15 +1,19 @@
-name: Deploy Script 
-on: [push]
+name: Proshanti CI/CD
+on:
+  push:
+    branches: [ main ]
+
 jobs:
+
   build:
-    name: Build
+    name: Deploy To Dev
     runs-on: ubuntu-latest
     steps:
-    - name: Run Deploy Script
+    - name: Deployment to Dev Environment
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: sh scripts/github-action-proshanti-deploy.sh  
+        script: sh scripts/github-action-proshanti-deploy.sh
