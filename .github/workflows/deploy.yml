@@ -13,6 +13,7 @@ jobs:
       env:
         GIT_USERNAME :  ${{ secrets.GIT_USERNAME }}
         GIT_PASSWORD :  ${{ secrets.GIT_PASSWORD }}
+        TOKEN : "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"
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
@@ -23,6 +24,7 @@ jobs:
           cd /home/proshanti/frappe-bench
           echo "USER -> $GIT_USERNAME"
           echo "PASS -> $GIT_PASSWORD"
+          echo " TOKEN -> $TOKEN "
           echo "* Pulling changes for sslcommerz_integration"
-          cd apps/sslcommerz_integration && git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/true-value-access/sslcommerz-integration.git main && cd -
+          cd apps/sslcommerz_integration && git pull https://$TOKEN:$TOKEN@github.com/true-value-access/sslcommerz-integration.git main && cd -
 
