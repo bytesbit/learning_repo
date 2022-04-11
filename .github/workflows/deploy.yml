@@ -10,18 +10,9 @@ jobs:
     steps:
     - name: SSH and run deploy script
       uses: appleboy/ssh-action@master
-      env:
-        GIT_USERNAME :  ${{ secrets.GIT_USERNAME }}
-        GIT_PASSWORD :  ${{ secrets.GIT_PASSWORD }}
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        envs : GIT_USERNAME,GIT_PASSWORD
-        script: |
-          set -e
-          cd /home/proshanti/frappe-bench
-          echo "* Pulling changes for sslcommerz_integration"
-          cd apps/sslcommerz_integration && git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/true-value-access/sslcommerz-integration.git main && cd -
-
+        script: sh scripts/github-action-proshanti-deploy.sh
