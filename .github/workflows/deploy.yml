@@ -5,24 +5,14 @@ on:
 
 jobs:
   deploy_to_dev:
-    name: Deployment to Dev Environment
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
-
-    - name: Reconfigure git to use ssh authentication
-      run: >
-        git config --global url."ssh://github.com/".insteadOf
-        https://git@github.com/
-
     - name: SSH and run deploy script
+      env:
+        NAME: "LOCAL"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: sh scripts/test.sh
+        envs: NAME
+        script: sh scripts/test.sh $NAME
