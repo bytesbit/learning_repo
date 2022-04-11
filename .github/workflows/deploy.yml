@@ -19,6 +19,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
+        envs : TOKEN,GIT_USERNAME,GIT_PASSWORD
         script: |
           set -e
           cd /home/proshanti/frappe-bench
