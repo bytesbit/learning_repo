@@ -13,11 +13,11 @@ jobs:
       with:
         persist-credentials: false
 
-    - name: Reconfigure git to use HTTP authentication
+    - name: Reconfigure git to use ssh authentication
       run: >
-        git config --global url."https://github.com/".insteadOf
-        ssh://git@github.com/
-        
+        git config --global url."ssh://github.com/".insteadOf
+        https://git@github.com/
+
     - name: SSH and run deploy script
       uses: appleboy/ssh-action@master
       with:
