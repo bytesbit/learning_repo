@@ -21,6 +21,8 @@ jobs:
         script: |
           set -e
           cd /home/proshanti/frappe-bench
+          echo "USER -> $GIT_USERNAME"
+          echo "PASS -> $GIT_PASSWORD"
           echo "* Pulling changes for sslcommerz_integration"
           cd apps/sslcommerz_integration && git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/true-value-access/sslcommerz-integration.git main && cd -
 
