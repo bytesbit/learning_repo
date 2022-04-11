@@ -5,15 +5,17 @@ on:
 
 jobs:
   deploy_to_dev:
+    name: Deployment to Dev Environment
+    runs-on: ubuntu-latest
+    steps:
     - name: SSH and run deploy script
-      runs-on: ubuntu-latest
-      env:
-        NAME: "LOCAL"
       uses: appleboy/ssh-action@master
+      env:
+        NAME : "LOCAL"
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        envs: NAME
-        script: sh scripts/test.sh $NAME
+        envs : NAME
+        script: sh scripts/tesh.sh $NAME
