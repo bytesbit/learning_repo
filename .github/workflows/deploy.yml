@@ -18,4 +18,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         envs : NAME
-        script: sh scripts/tesh.sh $NAME
+        script: sh scripts/test.sh $NAME
