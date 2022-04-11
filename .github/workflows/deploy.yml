@@ -11,11 +11,12 @@ jobs:
     - name: SSH and run deploy script
       uses: appleboy/ssh-action@master
       env:
-        NAME : "LOCAL"
+        GIT_USERNAME : ${{ secrets.GIT_USERNAME }}
+        GIT_PASSWORD : ${{ secrets.GIT_PASSWORD }}
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        envs : NAME
-        script: sh scripts/test.sh $NAME
+        envs : GIT_USERNAME,GIT_PASSWORD
+        script: sh scripts/test.sh 
