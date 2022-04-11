@@ -10,13 +10,9 @@ jobs:
     steps:
     - name: SSH and run deploy script
       uses: appleboy/ssh-action@master
-      env:
-        GIT_USERNAME : ${{ secrets.GIT_USERNAME }}
-        GIT_PASSWORD : ${{ secrets.GIT_PASSWORD }}
       with:
         host: ${{ secrets.SSH_HOST_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        envs : GIT_USERNAME,GIT_PASSWORD
-        script: sh scripts/test.sh 
+        script: bash scripts/github-action-proshanti-deploy.sh
