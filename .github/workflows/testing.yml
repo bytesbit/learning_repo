@@ -11,4 +11,4 @@ jobs:
     name: Implement testing
     runs-on: ubuntu-latest
     steps:
-      - run: echo "only running this job on pull request only one time  to master branch"
+      - run: echo "now this not works as pr is opned"
