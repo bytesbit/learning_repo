@@ -99,10 +99,3 @@ jobs:
         run: cd ~/frappe-bench/ && bench --site test_site run-tests  --skip-test-records --app proshanti_lms
         env:
           TYPE: server
-
-      - name: Upload coverage data
-        uses: codecov/codecov-action@v2
-        with:
-          fail_ci_if_error: true
-          files: /home/runner/frappe-bench/sites/coverage.xml
-          verbose: true
