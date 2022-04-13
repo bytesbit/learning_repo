@@ -85,7 +85,7 @@ jobs:
           mkdir -p /home/runner/.ssh
           ssh-keyscan github.com >> /home/runner/.ssh/known_hosts
           echo "${{ secrets.PROSHANTI_SSH }}" > /home/runner/.ssh/proshanti_key
-          chmod 600 /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/proshanti_key
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
           ssh-add /home/runner/.ssh/proshanti_key
 
