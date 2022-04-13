@@ -13,4 +13,4 @@ jobs:
     name: Implement testing
     runs-on: ubuntu-latest
     steps:
-      - run: echo "now this not works as pr is opned"
+      - run: echo "hope this run not again"
