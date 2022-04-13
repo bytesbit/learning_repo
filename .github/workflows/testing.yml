@@ -1,11 +1,14 @@
 name: Testing
 on:
   pull_request:
-    branches: [ master ]
+    types:
+      - opened
+    branches:
+      - master
 
 jobs:
   testing_project:
     name: Implement testing
     runs-on: ubuntu-latest
     steps:
-      - run: echo "only running this job on pull request to main branch"
+      - run: echo "now this not works as pr is opned"
