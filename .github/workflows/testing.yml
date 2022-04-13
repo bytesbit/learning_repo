@@ -96,7 +96,7 @@ jobs:
           bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
         
       - name: Run Tests
-        run: cd ~/frappe-bench/ && bench --site test_site run-tests --app proshanti_lms --coverage
+        run: cd ~/frappe-bench/ && bench --site test_site run-tests  --skip-test-records --app proshanti_lms
         env:
           TYPE: server
 
