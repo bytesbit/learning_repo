@@ -8,4 +8,4 @@ jobs:
     name: Implement testing
     runs-on: ubuntu-latest
     steps:
-    -run : echo "only running this job on pull request to main branch"
+      - run: echo "only running this job on pull request to main branch"
