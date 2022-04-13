@@ -78,7 +78,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Add SSH key
+      - name: Add SSH key to server
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
