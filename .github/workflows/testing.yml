@@ -90,6 +90,8 @@ jobs:
           ssh-add /home/runner/.ssh/proshanti_key
 
       - name: Install
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
         
