@@ -36,6 +36,6 @@ bench get-app erpnext --branch version-13
 bench start &
 bench --site test_site reinstall --yes
 
-bench get-app proshanti_lms --branch $1 git@github.com:true-value-access/proshanti-lms.git
+bench get-app proshanti_lms --branch 173-add-testing-workflow git@github.com:true-value-access/proshanti-lms.git
 bench --site test_site install-app proshanti_lms 
 bench setup requirements --dev
