@@ -1,11 +1,11 @@
 name: Pull request
 on: pull_request
-env:
-  CB: ${{ github.GITHUB_REF_NAME }}
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: run script
-        run: echo "Here is the branch name :$GITHUB_REF_NAME "
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - uses: nelonoel/branch-name@v1
+    - run: echo ${BRANCH_NAME}
