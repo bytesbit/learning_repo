@@ -5,9 +5,12 @@ on:
       - master
 
 jobs:
+  run_tests:
+    runs-on: ubuntu-20.04
     steps:
-    - name: Test env varailbe 
-    env:
-      CUB : ${{env.GITHUB_REF_NAME}}
-    run:
-       script:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh $CUB
+    - uses: actions/checkout@v2
+    - name: Run script file
+      env:
+          CUB : ${{env.GITHUB_REF_NAME}}
+      run:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh $CUB
+      shell: bash
