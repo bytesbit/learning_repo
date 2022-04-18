@@ -1,3 +1,3 @@
 #!bin/bash
 
-echo "Enviroment Variable : $CB"
+echo "Enviroment Variable In Bash File : $1"
