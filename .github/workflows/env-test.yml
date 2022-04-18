@@ -1,7 +1,7 @@
 name: Pull request
 on: pull_request
 env:
-  CB: $GITHUB_REF_NAME
+  CB: ${{ github.GITHUB_REF_NAME }}
 jobs:
   test:
     runs-on: ubuntu-latest
