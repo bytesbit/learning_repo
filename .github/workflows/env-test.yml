@@ -3,14 +3,17 @@ on:
   pull_request:
     branches:
       - master
-
+env:
+  NAME : Tester
+  CB:  ${{env.GITHUB_REF_NAME}}
 jobs:
   run_tests:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - name: Run script file
-      env:
-        CB:  ${{env.GITHUB_REF_NAME}}
-      run:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh 
+      run: |
+            echo "Here is the tester name : $NAME"
+            echo " Here what yo passing in script : $CB"
+            bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh $CB
       shell: bash
