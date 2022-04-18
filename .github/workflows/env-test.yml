@@ -2,7 +2,7 @@ name: Proshanti Testing
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 concurrency:
   group: ${{ github.run_id }}
