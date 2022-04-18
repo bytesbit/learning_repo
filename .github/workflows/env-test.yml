@@ -1,101 +1,12 @@
-name: Proshanti Testing
-on:
-  pull_request:
-    branches:
-      - master
+name: env_tutorial
 
-concurrency:
-  group: ${{ github.run_id }}
-  cancel-in-progress: true
+on: [pull_request] 
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    strategy:
-      fail-fast: false
-
-    name: Testing On server
-
-    services:
-      mysql:
-        image: mariadb:10.3
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: YES
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
-
+  job1:
+    ## The type of runner that the job will run on
+    runs-on: ubuntu-latest 
     steps:
-      - name: Clone
-        uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          check-latest: true
-
-      - name: Add to Hosts
-        run: echo "127.0.0.1 test_site" | sudo tee -a /etc/hosts
-
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/*requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Add SSH key to server
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      - name: step 1
         run: |
-          mkdir -p /home/runner/.ssh
-          ssh-keyscan github.com >> /home/runner/.ssh/known_hosts
-          echo "${{ secrets.PROSHANTI_DEPLOY_PRIVATE_KEY }}" > /home/runner/.ssh/proshanti_key
-          chmod 600 /home/runner/.ssh/proshanti_key
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
-          ssh-add /home/runner/.ssh/proshanti_key
-
-      - name: Install
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          bash ${GITHUB_WORKSPACE}/.github/helper/install.sh $GITHUB_REF_NAME
-        
-      - name: Run Tests
-        run: cd ~/frappe-bench/ && bench --site test_site run-tests  --skip-test-records --app proshanti_lms
-        env:
-          TYPE: server
+          bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh ${GITHUB_REF_NAME}
