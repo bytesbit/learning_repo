@@ -1,19 +1,11 @@
-name: Proshanti Testing
-on:
-  pull_request:
-    branches:
-      - master
+name: Pull request
+on: pull_request
 env:
-  NAME : Tester
-  CB:  ${{env.GITHUB_REF_NAME}}
+  FOO: Testing
 jobs:
-  run_tests:
-    runs-on: ubuntu-20.04
+  test:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-            echo "Here is the tester name : $NAME"
-            echo " Here what yo passing in script : $CB"
-            bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh $CB
-      shell: bash
+      - uses: actions/checkout@v1
+      - name: does a thing
+        run: bash ${GITHUB_WORKSPACE}/.github/helper/install.sh $FOO
