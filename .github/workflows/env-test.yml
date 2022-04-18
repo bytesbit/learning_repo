@@ -1,0 +1,13 @@
+name: Proshanti Testing
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+    setps:
+    - name: Test env varailbe 
+    env:
+      CUB : ${{env.GITHUB_REF_NAME}}
+    run:
+       script:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh $CUB
