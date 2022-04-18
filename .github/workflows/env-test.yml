@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: step 1
         run: |
-          bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh ${GITHUB_REF_NAME}
+          echo ${GITHUB_REF_NAME}
