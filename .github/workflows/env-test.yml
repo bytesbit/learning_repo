@@ -7,6 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: echo "Hello user"
-    - uses: nelonoel/branch-name@v1
-    - run: echo ${BRANCH_NAME}
+    - run:  echo ${GITHUB_REF}
