@@ -92,8 +92,9 @@ jobs:
       - name: Install
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          GITHUB_REF_BRANCH : ${{ env.GITHUB_REF_NAME }}
         run: |
-          bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
+          bash ${GITHUB_WORKSPACE}/.github/helper/install.sh $GITHUB_REF_BRANCH
         
       - name: Run Tests
         run: cd ~/frappe-bench/ && bench --site test_site run-tests  --skip-test-records --app proshanti_lms
