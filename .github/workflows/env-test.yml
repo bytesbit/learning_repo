@@ -10,5 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run script file
-      run:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh ${{env.GITHUB_REF_NAME}}
+      env:
+        CB:  ${{env.GITHUB_REF_NAME}}
+      run:  bash ${GITHUB_WORKSPACE}/.github/helper/envtest.sh 
       shell: bash
