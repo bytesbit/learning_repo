@@ -3,9 +3,10 @@ name: env_tutorial
 on: [pull_request] 
 
 jobs:
-  job1:
-    runs-on: ubuntu-latest 
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: step 1
-      - uses: nelonoel/branch-name@v1
-      - run: echo ${BRANCH_NAME}
+    - uses: actions/checkout@v1
+    - run: echo "Hello user"
+    - uses: nelonoel/branch-name@v1
+    - run: echo ${BRANCH_NAME}
